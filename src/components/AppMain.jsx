@@ -1,24 +1,33 @@
 import { useContext } from "react"
 import GlobalContext from "../context/GlobalContext"
+import AppList from "./AppList";
 
 export default function AppMain() {
 
-    const { apiResp } = useContext(GlobalContext)
-    console.log('apiResp', apiResp);
+    const { movieResp, tvResp } = useContext(GlobalContext)
 
     const imgUrl = 'https://image.tmdb.org/t/p'
 
+    function findFlag(i) {
+        let flag = '';
+        switch (i) {
+            case 'it':
+                flag = 'images/it.png'
+                break;
+            case 'en':
+                flag = 'images/en.png'
+                break;
+            default:
+                flag = 'images/placeholder.png'
+                break;
+        }
+        return flag
+    }
+
     return (
         <main>
-            <ul>
-                {apiResp && apiResp.map(curItem => (
-                    <li key={curItem.id}>
-                        <img src={`${imgUrl}/w200/${curItem.poster_path}`} alt="" />
-                        <h4>{curItem.title}</h4>
-                        <p>{curItem.overview}</p>
-                    </li>
-                ))}
-            </ul>
+            <AppList title={'Movie'} data={movieResp} imgUrl={imgUrl} findFlag={findFlag}></AppList>
+            <AppList title={'TV Series'} data={tvResp} imgUrl={imgUrl} findFlag={findFlag}></AppList>
         </main>
     )
 }
