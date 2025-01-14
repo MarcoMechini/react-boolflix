@@ -5,7 +5,7 @@ export default function AppHeader() {
 
     const [cerca, setCerca] = useState('');
 
-    const { getMovie } = useContext(GlobalContext)
+    const { getData } = useContext(GlobalContext)
 
     function handleOnChange(e) {
         setCerca(e.target.value)
@@ -13,8 +13,7 @@ export default function AppHeader() {
 
     function handleOnSubmit(e) {
         e.preventDefault()
-        console.log('cerca');
-        getMovie(cerca)
+        getData(cerca);
     }
 
     return (
