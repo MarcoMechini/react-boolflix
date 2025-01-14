@@ -7,13 +7,15 @@ import axios from "axios";
 
 function App() {
 
-  const [cerca, setCerca] = useState([])
+  // const [cerca, setCerca] = useState('')
+  const [apiResp, setApiResp] = useState([])
 
-  const apiUrl = 'https://api.themoviedb.org/3';
+  const apiUrl = 'https://api.themoviedb.org';
   const apiKey = 'b6fcd01fdf0aa1ab1e805569b71cdde1';
 
-  function getMovie() {
-    axios.get(`${apiUrl}/search/movie`,
+
+  function getMovie(cerca) {
+    axios.get(`${apiUrl}/3/search/movie`,
       {
         params: {
           api_key: apiKey,
@@ -21,14 +23,19 @@ function App() {
         }
       }
     )
-      .then(resp =>
-        console.log(resp)
+      .then(resp => {
+        setApiResp(resp.data.results)
+      }
       )
   }
 
 
 
-  const globalProviderValue = { cerca, setCerca, getMovie }
+  const globalProviderValue = {
+    apiUrl,
+    getMovie,
+    apiResp
+  }
 
   return (
     <GlobalContext.Provider value={globalProviderValue}>

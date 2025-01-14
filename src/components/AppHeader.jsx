@@ -3,7 +3,9 @@ import GlobalContext from "../context/GlobalContext";
 
 export default function AppHeader() {
 
-    const { cerca, setCerca, getMovie } = useContext(GlobalContext)
+    const [cerca, setCerca] = useState('');
+
+    const { getMovie } = useContext(GlobalContext)
 
     function handleOnChange(e) {
         setCerca(e.target.value)
@@ -12,12 +14,12 @@ export default function AppHeader() {
     function handleOnSubmit(e) {
         e.preventDefault()
         console.log('cerca');
-        getMovie()
+        getMovie(cerca)
     }
 
     return (
         <header>
-            <form onClick={handleOnSubmit}>
+            <form onSubmit={handleOnSubmit}>
                 <input type="text" onChange={handleOnChange} />
                 <button>Cerca</button>
             </form>
