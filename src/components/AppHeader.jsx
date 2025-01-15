@@ -1,3 +1,4 @@
+import './AppHeader.module.css'
 import { useContext, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
 
@@ -22,8 +23,11 @@ export default function AppHeader() {
 
     return (
         <header>
-            <input type="text" onChange={handleOnChange} onKeyUp={handleOnKeyUp} />
-            <button onClick={handleOnSubmit}>Cerca</button>
+            <img src="/images/logo.png" alt="" />
+            <div>
+                <input type="text" onChange={handleOnChange} onKeyUp={handleOnKeyUp} />
+                <button onClick={handleOnSubmit}><i className="fa-solid fa-magnifying-glass"></i></button>
+            </div>
         </header>
     )
 }

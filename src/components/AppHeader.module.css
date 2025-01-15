@@ -1,0 +1,22 @@
+:root {
+    --bg-color: #000
+}
+
+header {
+    background-color: var(--bg-color);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header i {
+    color: #fff;
+    padding-left: 4px;
+}
+
+header button {
+    background-color: var(--bg-color);
+    border: 0;
+    cursor: pointer;
+}
