@@ -1,11 +1,10 @@
 import './AppMain.module.css'
-import { useContext } from "react"
-import GlobalContext from "../context/GlobalContext"
+import { useGlobalContext } from "../context/GlobalContext"
 import AppList from "./AppList";
 
 export default function AppMain() {
 
-    const { movieResp, tvResp } = useContext(GlobalContext)
+    const { movieResp, tvResp } = useGlobalContext();
 
     const imgUrl = 'https://image.tmdb.org/t/p'
 

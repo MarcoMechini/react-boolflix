@@ -1,12 +1,12 @@
 import './AppHeader.module.css'
-import { useContext, useState } from "react";
-import GlobalContext from "../context/GlobalContext";
+import { useState } from "react";
+import { useGlobalContext } from "../context/GlobalContext";
 
 export default function AppHeader() {
 
     const [cerca, setCerca] = useState('');
 
-    const { getData } = useContext(GlobalContext)
+    const { getData } = useGlobalContext();
 
     function handleOnChange(e) {
         setCerca(e.target.value)
