@@ -7,7 +7,6 @@ import axios from "axios";
 
 function App() {
 
-  // const [cerca, setCerca] = useState('')
   const [movieResp, setMovieResp] = useState([])
   const [tvResp, setTvResp] = useState([])
 

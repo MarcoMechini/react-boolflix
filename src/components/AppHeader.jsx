@@ -16,12 +16,14 @@ export default function AppHeader() {
         getData(cerca);
     }
 
+    function handleOnKeyUp(e) {
+        if (e.key === 'Enter') getData(cerca);
+    }
+
     return (
         <header>
-            <form onSubmit={handleOnSubmit}>
-                <input type="text" onChange={handleOnChange} />
-                <button>Cerca</button>
-            </form>
+            <input type="text" onChange={handleOnChange} onKeyUp={handleOnKeyUp} />
+            <button onClick={handleOnSubmit}>Cerca</button>
         </header>
     )
 }
