@@ -27,7 +27,7 @@ export default function AppList({ data, imgUrl, findFlag, title }) {
                 </div>
                 {(curItem.poster_path !== null) ?
                     <img className={style.copertina} src={`${imgUrl}/w342/${curItem.poster_path}`} alt={`${curItem.title || curItem.name}`} /> :
-                    <img src="/images/placeholder.png" alt="Immagine di default" />
+                    <div className={style.copertina} ></div>
                 }
             </>
         )

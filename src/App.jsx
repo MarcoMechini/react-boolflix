@@ -23,6 +23,7 @@ function App() {
       }
     ).then(resp => {
       setMovieResp(resp.data.results)
+      console.log(resp.data.results)
     })
     axios.get(`${apiUrl}/3/search/tv`,
       {

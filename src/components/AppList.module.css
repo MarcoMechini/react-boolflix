@@ -7,15 +7,17 @@ section ul {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 section ul li {
     border: 2px solid #fff;
     list-style: none;
     position: relative;
-    background-color: red;
+    background-color: #fff;
+    width: calc(100% / 4 - 40px);
 }
-
 
 .desc {
     position: absolute;
@@ -23,11 +25,13 @@ section ul li {
     top: 0;
     left: 0;
     height: 100%;
-
+    overflow-y: scroll;
+    scrollbar-width: none;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 60px 10px;
     gap: 8px;
-    padding: 80px 10px;
     background-color: #000;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -36,21 +40,16 @@ section ul li {
 .copertina {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
     overflow: hidden;
     display: block;
 }
 
-.copertina:hover .desc,
-.desc:hover {
-    opacity: 1;
+section ul li:hover .desc {
     z-index: 1;
+    opacity: 1;
 }
 
 .desc img {
     width: 30px;
-}
-
-i {
-    color: #FEBC00;
 }
