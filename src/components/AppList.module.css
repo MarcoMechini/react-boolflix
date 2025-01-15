@@ -1,0 +1,56 @@
+img {
+    max-width: 100%;
+}
+
+section ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+section ul li {
+    border: 2px solid #fff;
+    list-style: none;
+    position: relative;
+    background-color: red;
+}
+
+
+.desc {
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 80px 10px;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.copertina {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: block;
+}
+
+.copertina:hover .desc,
+.desc:hover {
+    opacity: 1;
+    z-index: 1;
+}
+
+.desc img {
+    width: 30px;
+}
+
+i {
+    color: #FEBC00;
+}

@@ -1,3 +1,4 @@
+import './AppMain.module.css'
 import { useContext } from "react"
 import GlobalContext from "../context/GlobalContext"
 import AppList from "./AppList";

@@ -1,43 +1,49 @@
+import style from './AppList.module.css'
 export default function AppList({ data, imgUrl, findFlag, title }) {
 
     function SetStar({ value }) {
-        value = Math.ceil(value / 2);
+        const voto = Math.ceil(value / 2);
 
-        const stars = []
-        for (let i = 0; i < 5; i++) {
-            (value < 5) ? stars.push('solid') : stars.push('regular')
+        const stars = [];
+        for (let j = 0; j < 5; j++) {
+            (j < voto) ? stars.push('solid') : stars.push('regular')
         }
         return (
             stars.map((star, i) => (
                 <i key={i} className={`fa-${star} fa-star`}></i>
             ))
         )
-
     }
 
     function setList(curItem) {
         return (
             <>
-                <img src={`${imgUrl}/w342/${curItem.poster_path}`} alt="" />
-                <h4>{curItem.title}</h4>
-                <span>TITOLO ORIGINALE:{curItem.original_title}</span>
-                <span><SetStar value={curItem.vote_average} /></span>
-                <img src={findFlag(curItem.original_language)} />
-                {/* <p>{curItem.overview}</p> */}
+                <div className={style.desc}>
+                    <h4><strong>Titolo</strong>: {curItem.title || curItem.name}</h4>
+                    <span><strong>Titolo originale</strong>: {curItem.original_title || curItem.original_name}</span>
+                    <span><strong>Voto</strong>: <SetStar value={curItem.vote_average} /></span>
+                    <p><strong>Overview</strong>: {curItem.overview}</p>
+                    <img src={findFlag(curItem.original_language)} />
+                </div>
+                {(curItem.poster_path !== null) ?
+                    <img className={style.copertina} src={`${imgUrl}/w342/${curItem.poster_path}`} alt={`${curItem.title || curItem.name}`} /> :
+                    <img src="/images/placeholder.png" alt="Immagine di default" />
+                }
             </>
         )
     }
     return (
         <>
-            <h2>{title}</h2>
-            <ul>
-                {data && data.map(curItem => (
-                    <li key={curItem.id}>
-                        {/* da metterin callback?? */}
-                        {setList(curItem)}
-                    </li>
-                ))}
-            </ul>
+            <section>
+                <h2>{title}</h2>
+                <ul>
+                    {data && data.map(curItem => (
+                        <li key={curItem.id}>
+                            {setList(curItem)}
+                        </li>
+                    ))}
+                </ul>
+            </section>
         </>
     )
 }
